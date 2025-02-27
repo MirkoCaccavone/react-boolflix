@@ -6,7 +6,7 @@ import GlobalContext from "./../context/GlobalContext"; // Importiamo il contest
 const MovieForm = () => {
 
     // Accediamo alla funzione searchMovies
-    const { searchMovies } = useContext(GlobalContext);
+    const { searchMoviesAndTV } = useContext(GlobalContext);
 
     // state per la gestione delle informazioni raccolte dai campi del form
     const [formData, setFormData] = useState({ title: "" });
@@ -21,8 +21,8 @@ const MovieForm = () => {
     // funzione di gestione dell'invio dell'intero form per cercare il film
     function handleSubmit(e) {
         e.preventDefault();
-        // Eseguiamo la ricerca dei film con il titolo
-        searchMovies(formData.title);
+        // Eseguiamo la ricerca dei film e serie tv
+        searchMoviesAndTV(formData.title);
 
         // Reset del campo di input
         setFormData({ title: "" });
@@ -37,7 +37,7 @@ const MovieForm = () => {
                     name="title"
                     onChange={handleFormData}
                     value={formData.title}
-                    placeholder="cerca il tuo film"
+                    placeholder="cerca film o serie tv"
                 />
                 <button type="submit">Cerca</button>
             </form>
