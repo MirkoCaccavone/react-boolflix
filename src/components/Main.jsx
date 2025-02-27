@@ -17,6 +17,8 @@ export default function Main() {
 
         };
 
+
+
         // Se il codice della lingua esiste, restituisce la bandiera corrispondente
         return flags[language]
     };
@@ -29,6 +31,7 @@ export default function Main() {
                     {movies.map(movie => (
                         <li key={movie.id}>
                             <h3>{movie.title || movie.name}</h3>
+                            <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title || movie.name} />
                             <p><strong>Titolo Originale:</strong> {movie.original_title || movie.original_name}</p>
                             <p><strong>Lingua:</strong>
                                 {getFlag(movie.original_language) ? (
@@ -37,7 +40,7 @@ export default function Main() {
                                         style={{ width: "30px", height: "20px" }}
                                     />
                                 ) : (
-                                    <img src="./../public/bandiera_pirata.avif" alt="Flag not found" style={{ width: "30px", height: "20px" }} />
+                                    <img src="./../bandiera_pirata.avif" alt="Flag not found" style={{ width: "30px", height: "20px" }} />
                                 )}
                             </p>
                             <p><strong>Voto:</strong> {movie.vote_average}</p>
