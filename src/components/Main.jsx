@@ -10,7 +10,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"; // Icona stella pien
 export default function Main() {
 
     // Accediamo ai film dal contesto
-    const { movies } = useContext(GlobalContext);
+    const { movies, tvShows } = useContext(GlobalContext);
 
 
     // Funzione per determinare la bandiera dalla lingua
@@ -47,9 +47,9 @@ export default function Main() {
     return (
         <main>
             <h2>Risultati della ricerca</h2>
-            {movies.length > 0 ? (
+            {movies.length > 0 || tvShows.length > 0 ? (
                 <div className="containerCard" >
-                    {movies.map(movie => (
+                    {[...movies, ...tvShows].map(movie => (
                         <div className="card" key={movie.id}>
 
                             <img src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title || movie.name} />
@@ -67,7 +67,7 @@ export default function Main() {
                                     )}
                                 </p>
                                 <p><strong>Voto:</strong>
-                                    <div>{generateStars(movie.vote_average)}</div>
+                                    {generateStars(movie.vote_average)}
                                 </p>
 
                                 <p><strong>Tipo:</strong> {movie.type === "movie" ? "Film" : "Serie TV"}</p>
@@ -76,7 +76,7 @@ export default function Main() {
                     ))}
                 </div>
             ) : (
-                <h3>Nessun film trovato</h3>
+                <h3>Nessun film o serie tv trovata</h3>
             )}
         </main>
     );
