@@ -35,7 +35,7 @@ export default function Main() {
             stars.push(
                 <FontAwesomeIcon
                     key={i}
-                    icon={faStar} // Stella piena
+                    icon={faStar}
                     style={{ color: i < fullStars ? "#ffff80" : "#c0c0c0" }}
                 />
             )
@@ -48,30 +48,35 @@ export default function Main() {
         <main>
             <h2>Risultati della ricerca</h2>
             {movies.length > 0 ? (
-                <ul>
+                <div className="containerCard" >
                     {movies.map(movie => (
-                        <li key={movie.id}>
-                            <h3>{movie.title || movie.name}</h3>
-                            <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title || movie.name} />
-                            <p><strong>Titolo Originale:</strong> {movie.original_title || movie.original_name}</p>
-                            <p><strong>Lingua:</strong>
-                                {getFlag(movie.original_language) ? (
-                                    <Flag
-                                        code={getFlag(movie.original_language)}
-                                        style={{ width: "30px", height: "20px" }}
-                                    />
-                                ) : (
-                                    <img src="./../bandiera_pirata.avif" alt="Flag not found" style={{ width: "30px", height: "20px" }} />
-                                )}
-                            </p>
-                            <p><strong>Voto:</strong> {movie.vote_average}</p>
-                            <div>{generateStars(movie.vote_average)}</div>
-                            <p><strong>Tipo:</strong> {movie.type === "movie" ? "Film" : "Serie TV"}</p>
-                        </li>
+                        <div className="card" key={movie.id}>
+
+                            <img src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title || movie.name} />
+                            <div className="infoCard">
+                                <h3>{movie.title || movie.name}</h3>
+                                <p><strong>Titolo Originale:</strong> {movie.original_title || movie.original_name}</p>
+                                <p>
+                                    {getFlag(movie.original_language) ? (
+                                        <Flag
+                                            code={getFlag(movie.original_language)}
+                                            style={{ width: "50px", height: "35px" }}
+                                        />
+                                    ) : (
+                                        <img src="./../bandiera_pirata.avif" alt="Flag not found" style={{ width: "30px", height: "20px" }} />
+                                    )}
+                                </p>
+                                <p><strong>Voto:</strong>
+                                    <div>{generateStars(movie.vote_average)}</div>
+                                </p>
+
+                                <p><strong>Tipo:</strong> {movie.type === "movie" ? "Film" : "Serie TV"}</p>
+                            </div>
+                        </div>
                     ))}
-                </ul>
+                </div>
             ) : (
-                <p>Nessun film trovato</p>
+                <h3>Nessun film trovato</h3>
             )}
         </main>
     );

@@ -4,19 +4,96 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #434343;
+}
+
+/********************************
+         header rules
+*********************************/
 header {
-    background-color: aqua;
+    background-color: black;
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 30px 0;
+}
+
+header h3 {
+    color: red;
+}
+
+form button {
+    width: 50px;
+}
+
+/********************************
+      main rules
+*********************************/
+
+main {
+    padding-top: 10px;
 }
 
 main>h2 {
-    margin: 10px 0;
+    margin: 0 0 10px;
     font-size: 30px;
     text-align: center;
+    color: #fff;
 }
 
-main li {
+main>h3 {
+    font-size: 30px;
+}
+
+.containerCard {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: black;
     margin: 30px 0;
+    width: 190px;
+    height: 280px;
+    position: relative;
+    transition: transform 1.4s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.infoCard {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+}
+
+.card:hover .infoCard {
+    opacity: 1;
+    transform: rotateY(180deg);
+}
+
+/********************************
+   info card rules
+*********************************/
+
+.infoCard h3,
+p {
+    margin: 0 0 10px;
+
 }
