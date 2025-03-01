@@ -1,22 +1,12 @@
-// importiamo lo useState
-import { useState } from "react";
+// Importiamo i componenti
+import HomepageComponents from "../components/HomepageComponents";
 
-// importiamo i componenti
-import Header from "../components/Header";
-import Main from "../components/Main";
-
-
+// Componente Homepage per visualizzare la homepage del sito
 export default function Homepage() {
-    // Stato per i film trovati
-    const [movies, setMovies] = useState([]);
     return (
         <>
-
-            {/* Passiamo la funzione per aggiornare i film */}
-            <Header setMovies={setMovies} />
-            {/* // Passiamo i film trovati al Main */}
-            <Main movies={movies} />
+            {/* Componente per visualizzare i risultati della ricerca */}
+            <HomepageComponents />
         </>
     )
-
 }
