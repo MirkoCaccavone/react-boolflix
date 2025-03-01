@@ -6,6 +6,7 @@
 
 body {
     background-color: #434343;
+    font-family: 'Arial', sans-serif;
 }
 
 /********************************
@@ -15,16 +16,86 @@ header {
     background-color: black;
     display: flex;
     justify-content: space-between;
-    padding: 30px 0;
+    align-items: center;
+    padding: 20px 30px;
 }
 
-header h3 {
+header h2 {
     color: red;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+/********************************
+   form rules
+*********************************/
+
+form input {
+    width: 150px;
+    padding: 2px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:hover {
+    border-color: red;
+    box-shadow: 0 0 8px rgba(253, 23, 23, 0.6);
+}
+
+form input:focus {
+    outline: none;
+    border-color: red;
+    box-shadow: 0 0 8px rgba(253, 23, 23, 0.8);
 }
 
 form button {
-    width: 50px;
+    width: 55px;
+    height: 25px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
+
+form button:hover {
+    background-color: #C70039;
+    transform: scale(1.1);
+}
+
+/********************************
+       navBar rules
+*********************************/
+header>div {
+    display: flex;
+}
+
+.navBar {
+    margin-left: 30px;
+    position: relative;
+    top: 15px;
+
+}
+
+.navBar a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.navBar a:hover {
+    color: red;
+}
+
+.navBar a.active {
+    color: red;
+    border-bottom: 2px solid red;
+    padding-bottom: 20px;
+}
+
 
 /********************************
       main rules
@@ -32,6 +103,7 @@ form button {
 
 main {
     padding-top: 10px;
+    margin: 0 10px;
 }
 
 main>h2 {
@@ -39,10 +111,14 @@ main>h2 {
     font-size: 30px;
     text-align: center;
     color: #fff;
+    font-weight: bold;
 }
 
 main>h3 {
-    font-size: 30px;
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+    margin: 30px;
 }
 
 .containerCard {
@@ -50,15 +126,32 @@ main>h3 {
     justify-content: space-evenly;
     gap: 40px;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .card {
-    background-color: black;
-    margin: 30px 0;
-    width: 190px;
-    height: 280px;
+    background-color: #222;
+    margin: 20px 0;
+    width: 260px;
+    height: 360px;
     position: relative;
-    transition: transform 1.4s ease;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(253, 23, 23, 0.4);
+    transition: transform 1.4s ease, box-shadow 0.3s ease;
+}
+
+.card .no-image {
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    margin-top: 40px;
+}
+
+.icon-sad {
+    font-size: 50px;
+    color: yellow;
+    margin-bottom: 20px;
 }
 
 .card img {
@@ -81,11 +174,23 @@ main>h3 {
     background: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 10px;
+    overflow-y: auto;
+
+    /* Nasconde la scrollbar IE e Edge legacy */
+    -ms-overflow-style: none;
+    /* Nasconde la scrollbar in Firefox */
+    scrollbar-width: none;
 }
 
 .card:hover .infoCard {
     opacity: 1;
     transform: rotateY(180deg);
+}
+
+/* Nascondi la scrollbar in  Chrome,
+ Safari e Edge*/
+.infoCard::-webkit-scrollbar {
+    display: none;
 }
 
 /********************************
@@ -94,6 +199,31 @@ main>h3 {
 
 .infoCard h3,
 p {
-    margin: 0 0 10px;
+    margin: 0 0 15px;
 
+}
+
+.infoCard h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+
+.infoCard p {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.infoCard p strong {
+    color: #fff;
+}
+
+.infoCard a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.infoCard a:hover {
+    color: red;
 }
